@@ -2,9 +2,11 @@
   <div class="content">
     <div class="list-of-elements">
       <div class="array">
-        <div *ngFor="let ele of array" class="element {{ele}}"
-          [ngStyle]="{'height': ele + 'px', 'background-color': ele === num1 || ele === num2 ? '#69f0ae' : '#ff4081'}">{{ele}}</div>
-      </div>
+        <!-- <div *ngFor="let ele of array" class="element {{ele}}"
+          [ngStyle]="{'height': ele + 'px', 'background-color': ele === num1 || ele === num2 ? '#69f0ae' : '#ff4081'}">{{ele}}</div> -->
+          <div *ngFor="let ele of array" class="element {{ele}}"
+          [ngStyle]="{'height': ele + 'px', 'background-color': (ele === num1 || ele === num2) ? sortColor : color(0)}">{{ele}}</div>
+        </div>
     </div>
 
     <div class="sort">
