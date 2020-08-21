@@ -1,9 +1,15 @@
 <div class="container">
-    <div class="content">
-        <div class="list-of-elements">
-            <div class="array">
-                <div class="element" *ngFor="let ele of array" [ngStyle]="{'height': ele + 'px'}"></div>
-            </div>
-        </div>
+  <div class="content">
+    <div class="list-of-elements">
+      <div class="array">
+        <div class="element" *ngFor="let ele of array" [array]=array [ngStyle]="{'height': ele + 'px'}"></div>
+      </div>
     </div>
+
+    <div class="sort">
+      <button mat-mini-fab color="accent" (click)="sort()">
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>
