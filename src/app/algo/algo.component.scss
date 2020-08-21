@@ -1,0 +1,30 @@
+.container {
+  padding-top: 10px;
+  width: 100%;
+}
+
+.content {
+  width: max-content;
+  margin: auto;
+}
+
+.list-of-elements {
+
+  width: 700px;
+
+  .array {
+    margin: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    .element {
+      width: 30px;
+      background-color: #ff4081;
+      margin-right: 0.5%;
+      border: 0px transparent;
+      border-radius: 7px;
+    }
+  }
+
+}
