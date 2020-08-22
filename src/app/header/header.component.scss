@@ -4,9 +4,13 @@
     }
     .setting {
         display: flex;
+        font-size: 16px;
         
-        .add {
-            padding-left: 40px;
+        .speed {
+            margin-right: 40px;
+        }
+        .quantity {
+            margin-right: 40px;
         }
     }
 }

@@ -2,17 +2,23 @@
   <div class="content">
     <div class="list-of-elements">
       <div class="array">
-        <!-- <div *ngFor="let ele of array" class="element {{ele}}"
-          [ngStyle]="{'height': ele + 'px', 'background-color': ele === num1 || ele === num2 ? '#69f0ae' : '#ff4081'}">{{ele}}</div> -->
-          <div *ngFor="let ele of array" class="element {{ele}}"
-          [ngStyle]="{'height': ele + 'px', 'background-color': (ele === num1 || ele === num2) ? sortColor : color(0)}">{{ele}}</div>
+        <div *ngFor="let ele of array" class="element {{ele}}"
+          [ngStyle]="{'height': ele + 'px', 'background-color': (ele === num1 || ele === num2) ? sortColor : color(0)}">
         </div>
+      </div>
     </div>
 
+    <br>
+
     <div class="sort">
-      <button mat-mini-fab color="accent" (click)="sort()">
+      <button mat-mini-fab color="accent" (click)="selectionSort()">
         <mat-icon>play_arrow</mat-icon>
       </button>
+      <button mat-mini-fab color="accent" (click)="reCreateArray()">
+        <mat-icon>loop</mat-icon>
+      </button>
+      <span>{{delayAmount}}</span>
+      
     </div>
   </div>
 </div>

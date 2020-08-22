@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
-import { resolve } from 'dns';
+import { SettingService } from '../setting.service';
 
 @Component({
   selector: 'app-algo',
@@ -9,32 +8,35 @@ import { resolve } from 'dns';
 })
 export class AlgoComponent implements OnInit {
 
-  array: number[] = [100, 300, 234, 453, 123, 80, 222, 341, 113];
+  array: number[] = [0];
   sortColor: String;
 
   num1: number = 0;
   num2: number = 0;
 
-  constructor() { }
+  delayAmount: number;
+  
+  
+  constructor(
+    private settingService: SettingService
+  ) { }
 
   ngOnInit(): void {
+    this.array = this.createRandomArray(100, 350, 50, this.array);
     this.sortColor = this.color(0);
   }
 
+  
+  // delayAmount: number = 1;
 
-  selectionSort() {
-    this.sort;
-    
-  }
-
-  sort = async () => {
+  selectionSort = async () => {
     for (var i = 0; i < this.array.length; i++) {
       this.num1 = this.array[i];
       this.sortColor = this.color(1);
       for (var j = i + 1; j < this.array.length; j++) {
         this.num2 = this.array[j];
         this.sortColor = this.color(1);
-        await this.sleep(500);
+        await this.sleep(this.delayAmount = this.settingService.speedVal);
         if (this.array[i] > this.array[j]) {
 
           var temp = this.array[i];
@@ -46,9 +48,8 @@ export class AlgoComponent implements OnInit {
 
           this.sortColor = this.color(2);
 
-          await this.sleep(400);
+          await this.sleep(this.delayAmount);
         }
-
       }
     }
     this.sortColor = this.color(0);
@@ -58,20 +59,27 @@ export class AlgoComponent implements OnInit {
     return new Promise(resolve => setTimeout(resolve, milliseconds));
   }
 
-  swap(num1, num2) {
-    var temp = num1;
-    num1 = num2;
-    num2 = temp;
-  }
-
   color(number) {
     switch(number){
-      case 0: return '#ff4081';
-      case 1: return '#69f0ae';
-      case 2: return '#ffd740';
+      case 0: return '#ff4081'; // normal -> pink
+      case 1: return '#69f0ae'; // compare -> green
+      case 2: return '#ffd740'; // swap -> yellow
       default: return null;
     }
   }
 
+  randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
+  createRandomArray(min, max, quantity, array){
+    for (let i = 0; i <= quantity; i++){
+      array[i] = this.randomNumber(min, max);
+    }
+    return array;
+  }
+
+  reCreateArray(){
+    this.createRandomArray(100, 350, 60, this.array);
+  }
 }
