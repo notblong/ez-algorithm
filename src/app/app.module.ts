@@ -10,6 +10,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button'; 
 import { MatIconModule } from '@angular/material/icon';
 import { AlgoComponent } from './algo/algo.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatSelectModule } from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { AlgoComponent } from './algo/algo.component';
     MatSliderModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,16 +5,22 @@ import { Injectable } from '@angular/core';
 })
 export class SettingService {
 
-  speedVal: number; 
+  delayVal: number; 
   quantityVal: number;
+
+  isAddAlgo: boolean = false;
 
   constructor() { }
 
-  setSpedVal(speed){
-    this.speedVal = speed;
+  setDelayVal(delay){
+    this.delayVal = delay;
   }
 
   setQuantityVal(quantity){
     this.quantityVal = quantity;
+  }
+
+  setNewAlgo(){
+    this.isAddAlgo = true;
   }
 }

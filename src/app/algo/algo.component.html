@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="content">
+  <div class="content" id="content">
     <div class="list-of-elements">
-      <div class="array">
+      <div class="array" id="array">
         <div *ngFor="let ele of array" class="element {{ele}}"
-          [ngStyle]="{'height': ele + 'px', 'background-color': (ele === num1 || ele === num2) ? sortColor : color(0)}">
+          [ngStyle]="{'height': ele + 'px', 'background-color': (ele === numCompare1 || ele === numCompare2) ? sortColor : color(0)}">
         </div>
       </div>
     </div>
@@ -11,14 +11,33 @@
     <br>
 
     <div class="sort">
-      <button mat-mini-fab color="accent" (click)="selectionSort()">
+      <button mat-mini-fab color="accent" (click)="selectionSort()" [disabled] = "isRunning">
         <mat-icon>play_arrow</mat-icon>
       </button>
-      <button mat-mini-fab color="accent" (click)="reCreateArray()">
+      <button mat-mini-fab color="accent" (click)="createArray()" [disabled] = "isRunning">
         <mat-icon>loop</mat-icon>
       </button>
-      <span>{{delayAmount}}</span>
-      
+      <div class="delay">
+        <span>Delay </span>
+        <mat-slider min="{{delaymin}}" max="{{delaymax}}" step="1" (input)="setDelayValue($event)" ></mat-slider>
+        {{delayVal}}ms
+      </div>
+
+      <div class="quantity">
+        <span>Quantity </span>
+        <mat-slider min="{{quantitymin}}" max="{{quantitymax}}" step="1" (input)="setQuantityValue($event)" [disabled] = "isRunning">
+        </mat-slider> {{quantityVal}}
+      </div>
+      <div class="selection">
+        <label id="selection-label" for="">Sort  </label>
+          <select [disabled] = "isRunning">
+            <option *ngFor="let sort of sortList" value="{{sort.id}}">{{sort.name}}</option>
+          </select>
+      </div>
+
+      <!-- <button mat-mini-fab color="accent" (click)="testAnimation()">
+        <mat-icon>stop</mat-icon>
+      </button> -->
     </div>
   </div>
 </div>

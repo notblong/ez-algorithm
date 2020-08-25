@@ -8,22 +8,25 @@ import { SettingService } from '../setting.service';
 })
 export class HeaderComponent implements OnInit {
 
-  speedmin: number = 1;
-  speedmax: number = 500;
-  speedVal : number = this.speedmin;
-  quantityVal : number;
+  delaymin: number = 1;
+  delaymax: number = 500;
+  delayVal : number = this.delaymin;
+
+  quantitymin: number = 1;
+  quantitymax: number = 70;
+  quantityVal : number = this.quantitymin;
 
   constructor(private settingService: SettingService) { }
 
   ngOnInit(): void {
   }
 
-  setSpeedValue(event) {
-    this.speedVal = event.value;
-    this.settingService.setSpedVal(this.speedVal);
+  btnAddAnimation(){
+    document.getElementById("content").style.visibility = "visible";
+    document.getElementById("content").style.opacity = "1";
+    document.getElementById("content").style.transform = "translate(0, 0)";
   }
-  setQuantityValue(event) {
-    this.quantityVal = event.value;
-    this.settingService.setQuantityVal(this.quantityVal);
+  btnAddToggle(){
+    this.settingService.setNewAlgo();
   }
 }

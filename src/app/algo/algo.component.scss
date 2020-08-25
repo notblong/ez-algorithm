@@ -5,7 +5,15 @@
 
 .content {
   width: max-content;
-  margin: auto;
+  margin: 3% auto auto auto;
+  padding: 20px;
+  border: 0px solid transparent;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  opacity: 0;
+  transition: transform 0.3s, opacity 300ms;
+  transform: translate(0, -100px);
+  visibility: hidden;
 }
 
 .list-of-elements {
@@ -29,7 +37,24 @@
 }
 
 .sort {
+  display: flex;
+
   button {
     margin-right: 10px;
+  }
+
+  .delay {
+    margin: 0 20px;
+  }
+
+  .quantity {
+    margin-right: 20px;
+  }
+
+  .selection {
+    margin-top: 15px;
+    #selection-label{
+      padding-right: 5px;
+    }
   }
 }
