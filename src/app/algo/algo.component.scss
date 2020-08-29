@@ -1,3 +1,16 @@
+@keyframes fadedDown {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, -100px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+}
+
 .container {
   padding-top: 10px;
   width: 100%;
@@ -10,10 +23,7 @@
   border: 0px solid transparent;
   border-radius: 10px;
   background-color: #f5f5f5;
-  opacity: 0;
-  transition: transform 0.3s, opacity 300ms;
-  transform: translate(0, -100px);
-  visibility: hidden;
+  animation: fadedDown 0.4s;
 }
 
 .list-of-elements {
@@ -34,9 +44,23 @@
       border-radius: 7px;
     }
   }
+
+  .search-visualize {
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    .element {
+      height: 30px;
+      width: 30px;
+      // background-color: ;
+      margin-right: 0.5%;
+      border: 1px #ff4081;
+      border-radius: 7px;
+    }
+  }
 }
 
-.sort {
+.setting {
   display: flex;
 
   button {
@@ -52,7 +76,7 @@
   }
 
   .selection {
-    margin-top: 15px;
+    margin: 14px 0 0 20px;
     #selection-label{
       padding-right: 5px;
     }

@@ -1,27 +1,8 @@
 <mat-toolbar class="header">
   <span id="title">EzAlgorithm</span>
-  <div class="setting">
-    <!-- <div class="delay">
-      <span>Delay  </span>
-      <mat-slider min="{{delaymin}}" max="{{delaymax}}" step="1" (input)="setDelayValue($event)"></mat-slider> {{delayVal}}ms
-    </div>
-    
-    <div class="quantity">
-      <span>Quantity  </span>
-      <mat-slider min="{{quantitymin}}" max="{{quantitymax}}" step="1" (input)="setQuantityValue($event)"></mat-slider> {{quantityVal}}
-    </div> -->
-
-    <div class="selector">
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Sorting</mat-radio-button>
-        <mat-radio-button value="2">Path Finding</mat-radio-button>
-      </mat-radio-group>
-    </div>
-    
-    <div class="add">
-      <button mat-mini-fab color="accent" (click)="btnAddAnimation()">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
+  <div class="menu">
+    <a mat-stroked-button [routerLink]="['/sort']" routerLinkActive="router-link-active" >Sort</a>
+    <a mat-stroked-button [routerLink]="['/']" routerLinkActive="router-link-active" >Heap Sort</a>
+    <a mat-stroked-button [routerLink]="['/search']" routerLinkActive="router-link-active" >Search</a>
   </div>
 </mat-toolbar>

@@ -12,13 +12,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { AlgoComponent } from './algo/algo.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    AlgoComponent
+    AlgoComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatRadioModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,16 +1,14 @@
 .header {
-    #title {
-        padding-right: 70px;
+  #title {
+    padding-right: 70px;
+  }
+
+  .menu {
+    display: flex;
+    font-size: 16px;
+
+    a {
+      margin-right: 15px;
     }
-    .setting {
-        display: flex;
-        font-size: 16px;
-    
-        .selector {
-            mat-radio-button{
-                margin-right: 15px;
-                padding-top: 4px;
-            }
-        }
-    }
+  }
 }
