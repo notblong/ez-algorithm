@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SortModel } from '../model/sort.model';
-import { async } from '@angular/core/testing';
-import { stringify } from 'querystring';
+import { CustomArray } from '../model/custom-array.model';
 
 @Component({
   selector: 'app-search',
@@ -18,10 +17,11 @@ export class SearchComponent implements OnInit {
 
   searchColor: String;
 
-  numCompare: number;
-  numFound: number;
-  posFound: number;
-  isFound: boolean;
+  posCompare: number = -1;
+  numFound: number = -1;
+  posFound: number = -1;
+  isNotFound: boolean = false;
+  isRunning: boolean = false;
 
   searchList: SortModel[] = [
     { id: 1, name: "Linear Search" },
@@ -34,12 +34,12 @@ export class SearchComponent implements OnInit {
     this.createArray();
   }
 
-  color(caseNumber) {
-    switch (caseNumber) {
-      case 0: return this.pink;   // normal
-      case 1: return this.green;  // compare
-      case 2: return this.yellow; // found
-      case 3: return "red";       // not found.
+  color(nameOfColor) {
+    switch (nameOfColor) {
+      case 'pink': return this.pink;   // normal
+      case 'green': return this.green;  // compare
+      case 'yellow': return this.yellow; // found
+      case 'red': return "red";       // not found.
       default: return null;
     }
   }
@@ -48,22 +48,23 @@ export class SearchComponent implements OnInit {
 
   }
 
-  randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   generateRandomArray(min, max, quantity) {
-    if (this.array.length > quantity) {
-      this.array = [0];
-    }
+    // if (this.array.length > quantity) {
+    //   this.array = [];
+    // }
     for (let i = 0; i < quantity; i++) {
       this.array[i] = this.randomNumber(min, max);
     }
     return this.array;
   }
 
+  randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   createArray() {
-    this.generateRandomArray(0, 99, 15);
+    this.reset();
+    this.generateRandomArray(0, 25, 15);
   }
 
   sleep = (milliseconds) => {
@@ -72,31 +73,27 @@ export class SearchComponent implements OnInit {
 
   linearSearch = async() => {
     let target = 10;
-    this.posFound = 0;
+    this.isRunning = true;
+    this.isNotFound = false; 
     for (let i = 0; i < this.array.length; i++){
-      this.numCompare = this.array[i];
-      this.searchColor = this.color(1);
+      this.posCompare = i;
+      this.searchColor = this.color('green');
       await this.sleep(200);
       if (this.array[i] == target){
-        this.isFound = true;
-        this.numFound = this.array[i];
-        this.posFound = this.array[i];
-        this.searchColor = this.color(2);
-        return 0;
+        this.posFound = i;
+        this.searchColor = this.color('yellow');
+        return this.isRunning = false;
       }
     }
-    this.searchColor = this.color(0);
-    this.notFound();
+    this.searchColor = this.color('pink');
+    this.isNotFound = true;
     await this.sleep(300);
-    this.posFound = 0;
+    this.reset();
+    this.isRunning = false;
   }
 
-  notFound() {
+  reset(){
+    this.posCompare = -1;
     this.posFound = -1;
-    this.isFound = false;
   }
-
-
-  
-
 }

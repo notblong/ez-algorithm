@@ -28,9 +28,23 @@
   
   .list-of-elements {
     width: max-content;
+
+    .pointer{
+      margin: 10px 0 0 0;
+      display: flex;
+      justify-content: center;
+      .element {
+        height: 33px;
+        width: 33px;
+        background-color: transparent;
+        margin-right: 3px;
+        text-align: center;
+        visibility: hidden;
+      }
+    }
   
     .search-visualize {
-      margin: 10px 0 0 0;
+      // margin: 10px 0 0 0;
       display: flex;
       justify-content: center;
       .element {

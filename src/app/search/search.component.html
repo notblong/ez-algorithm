@@ -1,14 +1,17 @@
 <div class="container">
   <div class="content" id="content">
     <div class="list-of-elements">
-      <!-- <div class="array" id="array">
-          <div *ngFor="let ele of array" class="element {{ele}}"
-            [ngStyle]="{'height': ele + 'px', 'background-color': (ele === numCompare1 || ele === numCompare2) ? sortColor : color(0)}">
+      <div class="pointer">
+        <div *ngFor="let ele of array; let i = index" class="element {{i}}"
+          [ngStyle]="{'visibility': (i === posCompare || i === posFound) ? 'visible' : 'hidden'}">
+          <div style="margin: 4px 0 0 0">
+            <mat-icon>keyboard_arrow_down</mat-icon>
           </div>
-        </div> -->
+        </div>
+      </div>
       <div class="search-visualize">
-        <div *ngFor="let ele of array" class="element {{ele}}"
-          [ngStyle]="{'border-color': (ele === numCompare || ele === numFound) ? searchColor : color(0), 'background-color': (posFound == -1) ? color(0) : transparent}">
+        <div *ngFor="let ele of array; let i = index" class="element {{i}}" [ngStyle]="{'border-color': (i === posCompare || i === posFound) ? searchColor : color('pink'),
+                      'background-color': (isNotFound == true && isRunning == true) ? color('pink') : 'transparent'}">
           <div style="margin: 4px 0 0 0; font-size: 19px;">{{ele}}</div>
         </div>
       </div>
@@ -23,6 +26,8 @@
       <button mat-mini-fab color="accent" (click)="createArray()" [disabled]="isRunning">
         <mat-icon>loop</mat-icon>
       </button>
+      <label for="">Target</label>
+      <input type="text">
       <!-- <div class="selection">
           <label id="selection-label" for="">Sort </label>
           <select [(ngModel)]="selectedSortId" [disabled]="isRunning">
