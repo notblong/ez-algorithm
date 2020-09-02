@@ -11,6 +11,12 @@
   }
 }
 
+@keyframes growUp {
+  0% {
+    height: 0px;
+  }
+}
+
 .container {
   padding-top: 10px;
   width: 100%;
@@ -42,6 +48,7 @@
       margin-right: 0.5%;
       border: 0px transparent;
       border-radius: 7px;
+      // animation: growUp 1s infinite;
     }
   }
 

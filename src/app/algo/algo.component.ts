@@ -8,7 +8,7 @@ import { async } from '@angular/core/testing';
   templateUrl: './algo.component.html',
   styleUrls: ['./algo.component.scss']
 })
-export class AlgoComponent implements OnInit, AfterViewInit {
+export class AlgoComponent implements OnInit {
   static MIN_ELE = 10;
   static MAX_ELE = 350;
 
@@ -47,14 +47,10 @@ export class AlgoComponent implements OnInit, AfterViewInit {
   constructor(
     private sortService: SortService
   ) { }
-  ngAfterViewInit(): void {
-    this.btnAddAnimation();
-  }
 
   ngOnInit(): void {
     this.setHeightCssForArray()
     this.createArray();
-    // this.sortColor = this.color(0);
   }
 
   setDelayValue(event) {
@@ -165,12 +161,6 @@ export class AlgoComponent implements OnInit, AfterViewInit {
     } else if (this.selectedSortId == 3) {
       this.heapSort();
     }
-  }
-
-  btnAddAnimation(){
-    document.getElementById("content").style.visibility = "visible";
-    document.getElementById("content").style.opacity = "1";
-    document.getElementById("content").style.transform = "translate(0, 0)";
   }
 
 }

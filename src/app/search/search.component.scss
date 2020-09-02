@@ -80,5 +80,16 @@
         padding-right: 5px;
       }
     }
+
+    .target-input {
+      padding: 9px;
+      label {
+        margin: 0 10px 0 10px;
+      }
+      input {
+        width: 45px;
+        // font-size: 22px;
+      }
+    }
   }
   

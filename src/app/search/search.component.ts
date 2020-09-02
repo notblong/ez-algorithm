@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortModel } from '../model/sort.model';
 import { CustomArray } from '../model/custom-array.model';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,7 @@ import { CustomArray } from '../model/custom-array.model';
 })
 export class SearchComponent implements OnInit {
 
-  array: number[] = [0];
+  array: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
 
   pink: String = '#ff4081';
   green: String = '#69f0ae';
@@ -28,10 +29,12 @@ export class SearchComponent implements OnInit {
     { id: 2, name: "Binary Search" }
   ];
 
+  target: number;
+
   constructor() { }
 
   ngOnInit(): void {
-    this.createArray();
+    // this.createArray();
   }
 
   color(nameOfColor) {
@@ -67,19 +70,15 @@ export class SearchComponent implements OnInit {
     this.generateRandomArray(0, 25, 15);
   }
 
-  sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
-  }
-
   linearSearch = async() => {
-    let target = 10;
     this.isRunning = true;
-    this.isNotFound = false; 
+    this.isNotFound = false;
+    this.reset(); 
     for (let i = 0; i < this.array.length; i++){
       this.posCompare = i;
       this.searchColor = this.color('green');
       await this.sleep(200);
-      if (this.array[i] == target){
+      if (this.array[i] == this.target){
         this.posFound = i;
         this.searchColor = this.color('yellow');
         return this.isRunning = false;
@@ -87,13 +86,68 @@ export class SearchComponent implements OnInit {
     }
     this.searchColor = this.color('pink');
     this.isNotFound = true;
-    await this.sleep(300);
+    await this.sleep(400);
     this.reset();
     this.isRunning = false;
+  }
+
+  sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
   }
 
   reset(){
     this.posCompare = -1;
     this.posFound = -1;
+  }
+
+  runSearch(){
+    if (this.isTargetInvalid()){
+      // this.linearSearch();
+      this.binarySearch();
+    }
+  }
+
+  isTargetInvalid(){
+    if (this.target != null) {
+      console.log("co gia tri");
+      return true;
+    } else {
+      console.log("hell no!");
+      return false;
+    }
+  }
+
+  left = 0;
+  right = this.array.length - 1;
+
+  binarySearch = async() =>{
+    this.isRunning = true;
+    this.isNotFound = false;
+    this.reset(); 
+
+    this.left = 0;
+    this.right = this.array.length - 1;
+    let mid = 0;
+    while(this.left <= this.right) {
+      mid = Math.floor((this.right + this.left +1)/2);
+      this.posCompare = mid;
+      this.searchColor = this.color('green');
+      await this.sleep(700);
+      if (this.target == this.array[mid]){
+        console.log("pos = " + mid);
+        this.posFound = mid;
+        this.searchColor = this.color('yellow');
+        break;
+      } else if (this.target < this.array[mid]) {
+        this.right = mid - 1;
+      } else if (this.target > this.array[mid]) {
+        this.left = mid + 1;
+      }
+    }
+    this.searchColor = this.color('pink');
+    this.isNotFound = true;
+    await this.sleep(300);
+    this.reset();
+    this.isRunning = false;
   }
 }

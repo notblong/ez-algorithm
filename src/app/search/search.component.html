@@ -10,8 +10,10 @@
         </div>
       </div>
       <div class="search-visualize">
+        <!-- <div *ngFor="let ele of array; let i = index" class="element {{i}}" [ngStyle]="{'border-color': (i === posCompare || i === posFound) ? searchColor : color('pink'),
+                      'background-color': (isNotFound == true && isRunning == true) ? color('pink') : 'transparent'}"> -->
         <div *ngFor="let ele of array; let i = index" class="element {{i}}" [ngStyle]="{'border-color': (i === posCompare || i === posFound) ? searchColor : color('pink'),
-                      'background-color': (isNotFound == true && isRunning == true) ? color('pink') : 'transparent'}">
+                      'background-color': (i < left || i > right) ? color('pink') : 'transparent'}">
           <div style="margin: 4px 0 0 0; font-size: 19px;">{{ele}}</div>
         </div>
       </div>
@@ -20,14 +22,16 @@
     <br>
 
     <div class="setting">
-      <button mat-mini-fab color="accent" (click)="linearSearch()" [disabled]="isRunning">
+      <button mat-mini-fab color="accent" (click)="runSearch()" [disabled]="isRunning">
         <mat-icon>play_arrow</mat-icon>
       </button>
       <button mat-mini-fab color="accent" (click)="createArray()" [disabled]="isRunning">
         <mat-icon>loop</mat-icon>
       </button>
-      <label for="">Target</label>
-      <input type="text">
+      <div class="target-input">
+        <label for="">Target</label>
+        <input type="text" [(ngModel)]="target" [disabled]="isRunning"> {{target}}
+      </div>
       <!-- <div class="selection">
           <label id="selection-label" for="">Sort </label>
           <select [(ngModel)]="selectedSortId" [disabled]="isRunning">
