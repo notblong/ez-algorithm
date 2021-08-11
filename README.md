@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Create to visualize how algorithm works
 
+Demo here: https://devvdevv.github.io/ez-algorithm
+
 # How to deploy angular project to Github pages?
 
 Follow this tutorial: https://angular.io/guide/deployment
