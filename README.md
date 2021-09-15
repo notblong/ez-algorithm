@@ -10,4 +10,4 @@ Demo here: https://devvdevv.github.io/ez-algorithm
 
 Follow this tutorial: https://angular.io/guide/deployment
 
-github pages build command: ng build --output-path docs --base-href ez-algorithm
+github pages build command: ng build --output-path docs --base-href
