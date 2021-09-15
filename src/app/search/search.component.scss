@@ -10,12 +10,12 @@
       transform: translate(0, 0);
     }
   }
-  
+
   .container {
     padding-top: 10px;
     width: 100%;
   }
-  
+
   .content {
     width: max-content;
     margin: 3% auto auto auto;
@@ -25,7 +25,7 @@
     background-color: #f5f5f5;
     animation: fadedDown 0.4s;
   }
-  
+
   .list-of-elements {
     width: max-content;
 
@@ -42,7 +42,7 @@
         visibility: hidden;
       }
     }
-  
+
     .search-visualize {
       // margin: 10px 0 0 0;
       display: flex;
@@ -58,22 +58,22 @@
       }
     }
   }
-  
+
   .setting {
     display: flex;
-  
+
     button {
       margin-right: 10px;
     }
-  
+
     .delay {
       margin: 0 20px;
     }
-  
+
     .quantity {
       margin-right: 20px;
     }
-  
+
     .selection {
       margin: 14px 0 0 20px;
       #selection-label{
@@ -92,4 +92,7 @@
       }
     }
   }
-  
+
+  .alert-text {
+    color: red;
+  }

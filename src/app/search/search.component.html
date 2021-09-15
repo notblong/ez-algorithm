@@ -17,7 +17,7 @@
         </div>
         <br>
         <div class="setting">
-            <button mat-mini-fab color="accent" (click)="runSearch()" [disabled]="isRunning">
+            <button mat-mini-fab color="accent" (click)="runSearch()" [disabled]="isRunning || !valid">
         <mat-icon>play_arrow</mat-icon>
       </button>
             <button mat-mini-fab color="accent" (click)="createArray()" [disabled]="true">
@@ -25,7 +25,8 @@
       </button>
             <div class="target-input">
                 <label for="">Target</label>
-                <input type="text" [(ngModel)]="target" [disabled]="isRunning">
+                <input type="tel" [(ngModel)]="target" (change)="onChange(target)" [disabled]="isRunning">
+                <span class="alert-text" *ngIf="!valid">  input should be a number!</span>
             </div>
         </div>
     </div>

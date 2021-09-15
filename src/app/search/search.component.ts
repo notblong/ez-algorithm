@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SortModel } from '../model/sort.model';
-import { CustomArray } from '../model/custom-array.model';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-search',
@@ -23,6 +21,7 @@ export class SearchComponent implements OnInit {
   posFound: number = -1;
   isNotFound: boolean = false;
   isRunning: boolean = false;
+  valid: boolean = true;
 
   searchList: SortModel[] = [
     { id: 1, name: "Linear Search" },
@@ -33,8 +32,15 @@ export class SearchComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    // this.createArray();
+  ngOnInit(): void { }
+
+  onChange(val) {
+    if (isNaN(val)) {
+      this.valid = false;
+    } else {
+      this.valid = true;
+      this.target = val;
+    }
   }
 
   color(nameOfColor) {
@@ -52,9 +58,6 @@ export class SearchComponent implements OnInit {
   }
 
   generateRandomArray(min, max, quantity) {
-    // if (this.array.length > quantity) {
-    //   this.array = [];
-    // }
     for (let i = 0; i < quantity; i++) {
       this.array[i] = this.randomNumber(min, max);
     }
@@ -73,7 +76,7 @@ export class SearchComponent implements OnInit {
   linearSearch = async() => {
     this.isRunning = true;
     this.isNotFound = false;
-    this.reset(); 
+    this.reset();
     for (let i = 0; i < this.array.length; i++){
       this.posCompare = i;
       this.searchColor = this.color('green');
@@ -123,7 +126,7 @@ export class SearchComponent implements OnInit {
   binarySearch = async() =>{
     this.isRunning = true;
     this.isNotFound = false;
-    this.reset(); 
+    this.reset();
 
     this.left = 0;
     this.right = this.array.length - 1;
