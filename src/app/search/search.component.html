@@ -9,8 +9,6 @@
                 </div>
             </div>
             <div class="search-visualize">
-                <!-- <div *ngFor="let ele of array; let i = index" class="element {{i}}" [ngStyle]="{'border-color': (i === posCompare || i === posFound) ? searchColor : color('pink'),
-                      'background-color': (isNotFound == true && isRunning == true) ? color('pink') : 'transparent'}"> -->
                 <div *ngFor="let ele of array; let i = index" class="element {{i}}" [ngStyle]="{'border-color': (i === posCompare || i === posFound) ? searchColor : color('pink'),
                       'background-color': (i < left || i > right) ? color('pink') : 'transparent'}">
                     <div style="margin: 4px 0 0 0; font-size: 19px;">{{ele}}</div>

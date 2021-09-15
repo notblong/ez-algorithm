@@ -38,7 +38,7 @@ export class AlgoComponent implements OnInit {
   sortList: SortModel[] = [
     { id: 1, name: "Selection" },
     { id: 2, name: "Bubble" },
-    { id: 3, name: "Heap" },
+    // { id: 3, name: "Heap" },
   ];
 
   isRunning: boolean = false;

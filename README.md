@@ -9,3 +9,5 @@ Demo here: https://devvdevv.github.io/ez-algorithm
 # How to deploy angular project to Github pages?
 
 Follow this tutorial: https://angular.io/guide/deployment
+
+github pages build command: ng build --output-path docs --base-href ez-algorithm
