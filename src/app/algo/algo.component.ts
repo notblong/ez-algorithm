@@ -4,6 +4,12 @@ import {
 } from "@angular/core";
 import { SortModel } from "../model/sort.model";
 
+enum ColorSort {
+  pink,
+  green,
+  yellow
+}
+
 @Component({
   selector: "app-algo",
   templateUrl: "./algo.component.html",
@@ -13,9 +19,9 @@ export class AlgoComponent implements OnInit {
   static MIN_ELE = 10;
   static MAX_ELE = 350;
 
-  pink: String = "#ff4081";
-  green: String = "#69f0ae";
-  yellow: String = "#ffd740";
+  static pink = "#ff4081";
+  static green = "#69f0ae";
+  static yellow = "#ffd740";
 
   array: number[] = [0];
   sortColor: String;
@@ -54,6 +60,7 @@ export class AlgoComponent implements OnInit {
   setDelayValue(event) {
     this.delayVal = event.value;
   }
+
   setQuantityValue(event) {
     this.quantityVal = event.value;
     this.createArray();
@@ -64,36 +71,43 @@ export class AlgoComponent implements OnInit {
       AlgoComponent.MAX_ELE + "px";
   }
 
-  randomNumber(min, max) {
+  getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  generateRandomArray(min, max, quantity) {
+  generateUniqueRandomArray(min, max, quantity) {
     if (this.array.length > quantity) {
       this.array = [0]; // reset.
     }
+
     for (let i = 0; i < quantity; i++) {
-      this.array[i] = this.randomNumber(min, max);
+      let randomNumber = this.getRandomNumber(min, max);
+      while (this.array.indexOf(randomNumber) !== -1) {
+        randomNumber = this.getRandomNumber(min, max);
+      }
+
+      this.array[i] = randomNumber;
     }
+
     return this.array;
   }
 
   createArray() {
-    this.generateRandomArray(
+    this.generateUniqueRandomArray(
       AlgoComponent.MIN_ELE,
       AlgoComponent.MAX_ELE,
       this.quantityVal
     );
   }
 
-  color(caseNumber) {
-    switch (caseNumber) {
-      case 0:
-        return this.pink; // normal
-      case 1:
-        return this.green; // compare
-      case 2:
-        return this.yellow; // swap
+  color(colorSort: ColorSort) {
+    switch (colorSort) {
+      case ColorSort.pink:
+        return AlgoComponent.pink; // normal
+      case ColorSort.green:
+        return AlgoComponent.green; // compare
+      case ColorSort.yellow:
+        return AlgoComponent.yellow; // swap
       default:
         return null;
     }
@@ -103,14 +117,14 @@ export class AlgoComponent implements OnInit {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
   };
 
-  selectionSort = async() => {
+  selectionSort = async () => {
     this.isRunning = true;
     for (let i = 0; i < this.array.length; i++) {
       this.numCompare1 = this.array[i];
-      this.sortColor = this.color(1);
+      this.sortColor = this.color(ColorSort.pink);
       for (let j = i + 1; j < this.array.length; j++) {
         this.numCompare2 = this.array[j];
-        this.sortColor = this.color(1);
+        this.sortColor = this.color(ColorSort.green);
         await this.sleep(this.delayVal);
         if (this.array[i] > this.array[j]) {
           let temp = this.array[i];
@@ -120,7 +134,7 @@ export class AlgoComponent implements OnInit {
           this.numCompare1 = this.array[i];
           this.numCompare2 = this.array[j];
 
-          this.sortColor = this.color(2);
+          this.sortColor = this.color(ColorSort.yellow);
 
           await this.sleep(this.delayVal);
         }
@@ -130,7 +144,7 @@ export class AlgoComponent implements OnInit {
     this.isRunning = false;
   };
 
-  bubbleSort = async() => {
+  bubbleSort = async () => {
     this.isRunning = true;
     let size = this.array.length;
     for (let i = 0; i < this.array.length; i++) {
@@ -154,7 +168,7 @@ export class AlgoComponent implements OnInit {
     this.isRunning = false;
   };
 
-  heapSort = async() => {
+  heapSort = async () => {
 
   }
 
