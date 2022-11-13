@@ -18,7 +18,7 @@ jobs:
     steps:
     - name: step 1
         ## Reference your environment variables
-      run: echo "The API key is:${{secrets.ACCESS_EZ_ALGO_TOKEN}}"
+      run: echo "The API key is:${{secrets.ACCESS_TOKEN}}"
     - uses: actions/checkout@v2
     - name: Angular Deploy gh-pages Actions
       uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
