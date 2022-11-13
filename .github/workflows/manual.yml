@@ -21,4 +21,4 @@ jobs:
       with:
         base_href: /ez-algorithm/
         deploy_branch: gh-pages
-        # angular_dist_build_folder: dist/my-project # The folder where your project is supposed to be after running ng build by the action.
+        angular_dist_build_folder: docs
