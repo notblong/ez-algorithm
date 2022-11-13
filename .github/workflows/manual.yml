@@ -23,4 +23,4 @@ jobs:
         github_access_token: ${{ secrets.ACCESS_TOKEN }}
         base_href: /ez-algorithm/
         deploy_branch: gh-pages
-        angular_dist_build_folder: docs
+        angular_dist_build_folder: dist/ez-algorithm
